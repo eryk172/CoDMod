@@ -1,3 +1,4 @@
+
 #include <amxmodx>
 #include <sqlx>
 #include <fakemeta>
@@ -21,7 +22,8 @@ new const accountStatus[status][] = { "Niezarejestrowany", "Niezalogowany", "Zal
 new const commandAccount[][] = { "konto", "say /haslo", "say_team /haslo", "say /password", "say_team /password",
 	"say /konto", "say_team /konto", "say /account", "say_team /account" };
 
-new playerData[MAX_PLAYERS + 1][playerInfo], Handle:sql, bool:sqlConnected, dataLoaded, autoLogin,
+new playerData[MAX_PLAYERS + 1][pl
+yerInfo], Handle:sql, bool:sqlConnected, dataLoaded, autoLogin,
 	cvarAccountsEnabled, cvarLoginMaxTime, cvarPasswordMaxFails, cvarPasswordMinLength, cvarSetinfo[32];
 
 public plugin_init()
@@ -81,7 +83,7 @@ public cod_reset_all_data()
 public client_connect(id)
 {
 	playerData[id][PASSWORD] = "";
-	playerData[id][STATUS] = NOT_REGISTERED;
+	playerData[id][STATUS] = GUEST;
 	playerData[id][FAILS] = 0;
 
 	rem_bit(id, dataLoaded);
@@ -750,7 +752,7 @@ public _cod_check_account(plugin_id, num_params)
 		return false;
 	}
 
-	if (playerData[id][STATUS] < LOGGED) {
+	if (playerData[id][STATUS] != LOGGED) {
 		cod_print_chat(id, "Musisz sie^x03 zalogowac^x01, aby miec dostep do glownych funkcji!");
 
 		account_menu(id, true);
