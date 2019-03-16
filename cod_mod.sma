@@ -1236,7 +1236,7 @@ public assign_points_handler(id, menu, item)
 
 	if (!codPlayer[id][PLAYER_POINTS]) return PLUGIN_CONTINUE;
 
-	new statsLimit = cvarPointsLimitEnabled ? (cvarLevelLimit * cvarPointsPerLevel / 5) : 0;
+	new statsLimit = cvarPointsLimitEnabled ? (cvarLevelLimit * cvarPointsPerLevel / 5) + 10 : 0;
 
 	new pointsDistributionAmount = (pointsDistribution[codPlayer[id][PLAYER_POINTS_SPEED]] == FULL) ? codPlayer[id][PLAYER_POINTS] :
 		(pointsDistribution[codPlayer[id][PLAYER_POINTS_SPEED]] > codPlayer[id][PLAYER_POINTS] ? codPlayer[id][PLAYER_POINTS] : pointsDistribution[codPlayer[id][PLAYER_POINTS_SPEED]]);
@@ -3656,7 +3656,7 @@ public load_class(id, class)
 	}
 
 	if (cvarPointsLimitEnabled) {
-		new statsLimit = cvarLevelLimit * cvarPointsPerLevel / 5;
+		new statsLimit = cvarLevelLimit * cvarPointsPerLevel / 5 + 10;
 
 		if (codPlayer[id][PLAYER_INT] > statsLimit
 			|| codPlayer[id][PLAYER_HEAL] > statsLimit
