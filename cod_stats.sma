@@ -16,7 +16,7 @@
 
 #define ADMIN_FLAG ADMIN_BAN
 
-new const commandMenu[][] = { "menustaty", "say /statsmenu", "say_team /statsmenu", "say /statymenu", "say_team /statymenu", "say /menustaty", "say_team /menustaty" };
+new const commandMenu[][] = { "menustaty", "say /statsmenu", "say_team /statsmenu", "say /statymenu", "say_team /statymenu", "say /menustaty", "say_team /menustaty", "say_team /top15", "say /top15"  };
 new const commandTime[][] = { "czas", "say /time", "say_team /time", "say /czas", "say_team /czas" };
 new const commandAdminTime[][] = { "czasadmin", "say /timeadmin", "say_team /timeadmin", "say /tadmin", "say_team /tadmin", "say /czasadmin", "say_team /czasadmin", "say /cadmin", "say_team /cadmin", "say /adminczas", "say_team /adminczas" };
 new const commandTopTime[][] = { "topczas", "say /ttop15", "say_team /ttop15", "say /toptime", "say_team /toptime", "say /ctop15", "say_team /ctop15", "say /topczas", "say_team /topczas" };
@@ -165,6 +165,7 @@ public stats_menu(id)
 
 	new menu = menu_create("\yMenu \yStatystyk\r", "stats_menu_handle");
 
+	menu_additem(menu, "\wTop \rLeveli \y(/toplvl)", "8");
 	menu_additem(menu, "\wMoj \rCzas \y(/czas)", "1");
 
 	if (playerStats[id][ADMIN]) menu_additem(menu, "\wCzas \rAdminow \y(/adminczas)", "2");
@@ -210,6 +211,7 @@ public stats_menu_handle(id, menu, item)
 		case 5: command_top_stats(id);
 		case 6: command_medals(id);
 		case 7: command_top_medals(id);
+		case 8: client_cmd(id, "top")
 	}
 
 	menu_destroy(menu);
