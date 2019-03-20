@@ -21,6 +21,8 @@ new const accountStatus[status][] = { "Niezarejestrowany", "Niezalogowany", "Zal
 new const commandAccount[][] = { "konto", "say /haslo", "say_team /haslo", "say /password", "say_team /password",
 	"say /konto", "say_team /konto", "say /account", "say_team /account" };
 
+new const RestrictedName[][] = { "Gracz | Cssetti.pl", "Gracz", "Player", "Zmien Nick"};
+
 new playerData[MAX_PLAYERS + 1][playerInfo], Handle:sql, bool:sqlConnected, dataLoaded, autoLogin,
 	cvarAccountsEnabled, cvarLoginMaxTime, cvarPasswordMaxFails, cvarPasswordMinLength, cvarAutoLoginConfig, cvarSetinfo[32];
 
@@ -187,6 +189,13 @@ public account_menu(id, sound)
 		engclient_cmd(id, "chooseteam");
 
 		return PLUGIN_HANDLED;
+	}
+
+	for (new i; i < sizeof RestrictedName; i++) {
+		if ( equali(playerData[id][NAME], RestrictedName[i])) {
+			cod_print_chat(id, "Musisz ^x04zmienic nick^x01, aby moc ^x04zalozyc konto!");
+			return PLUGIN_HANDLED;
+		}
 	}
 
 	if (sound) client_cmd(id, "spk %s", codSounds[SOUND_SELECT]);
