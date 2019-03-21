@@ -39,6 +39,7 @@ new cvarMinPlayers, cvarMedalsEnabled, cvarGoldMedalExp, cvarSilverMedalExp, cva
 new soundsVault, soundMayTheForce, soundOneAndOnly, soundPrepare, soundHumiliation, soundLastLeft;
 
 forward amxbans_admin_connect(id);
+forward client_admin(id);
 
 public plugin_init()
 {
@@ -118,6 +119,9 @@ public amxbans_admin_connect(id)
 
 public client_authorized(id)
     client_authorized_post(id);
+    
+public client_admin(id)
+	client_authorized_post(id);
 
 public client_authorized_post(id)
     playerStats[id][ADMIN] = (get_user_flags(id) & ADMIN_FLAG) ? 1 : 0;
