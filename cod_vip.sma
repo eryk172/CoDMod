@@ -11,6 +11,7 @@ new const commandVIP[][] = { "say /vip", "say_team /vip", "say /vip", "say_team 
 new const commandVIPs[][] = { "say /vips", "say_team /vips", "say /vipy", "say_team /vipy", "vipy" };
 
 forward amxbans_admin_connect(id);
+forward client_admin(id);
 
 public plugin_init()
 {
@@ -40,6 +41,9 @@ public amxbans_admin_connect(id)
 public client_authorized(id)
 	client_authorized_post(id);
 
+public client_admin(id)
+	client_authorized_post(id);
+	
 public client_authorized_post(id)
 {
 	if (get_user_flags(id) & ADMIN_LEVEL_H) {
