@@ -12,8 +12,6 @@ new Array:listVIPs, vip;
 new const commandVIP[][] = { "say /vip", "say_team /vip", "say /vip", "say_team /vip", "vip" };
 new const commandVIPs[][] = { "say /vips", "say_team /vips", "say /vipy", "say_team /vipy", "vipy" };
 
-forward amxbans_admin_connect(id);
-
 public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
