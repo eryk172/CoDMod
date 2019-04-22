@@ -18,7 +18,7 @@
 
 #define TASK_RADAR 84722
 
-new classLastUsed[MAX_PLAYERS + 1], classActive;
+new classLastUsed[MAX_PLAYERS + 1];
 
 public plugin_init()
 {
@@ -32,8 +32,6 @@ public plugin_init()
 public cod_class_enabled(id, promotion)
 {
 	classLastUsed[id] = 0;
-
-	rem_bit(id, classActive);
 }
 
 public cod_class_skill_used(id)
