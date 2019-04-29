@@ -1,5 +1,5 @@
 #include <amxmodx>
-#include <shop_sms>
+#include <sklep_sms>
 
 #define PLUGIN "Sklep-SMS: Usluga CoD All"
 #define AUTHOR "O'Zone"
