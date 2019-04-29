@@ -1,5 +1,5 @@
 #include <amxmodx>
-#include <shop_sms>
+#include <sklep_sms>
 #include <cod>
 
 #define PLUGIN "Sklep-SMS: Usluga CoD Honor"
